@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+
+:root {
+  --white: #eaeaea;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  width: 100vw;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  gap: 20px;
+  color: var(--white);
+  &__air {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    &__quality {
+      display: none;
+      &-Active {
+        border: none;
+        display: block;
+        border: none;
+      }
+    }
+  }
+  &_box {
+    display: flex;
+    flex-direction: column;
+  }
+  &__form {
+    .submitButton {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 12px;
+      margin: 12px 0 0 10px;
+    }
+    .getCurrentLocationButton {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 12px;
+      margin: 12px 0 0 180px;
+    }
+    .cityInput {
+      border-radius: 30px;
+      border: 1px solid #000;
+      width: 200px;
+      padding: 10px 10px 10px 26px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    &__image {
+      height: 250px;
+      width: 250px;
+    }
+  }
+  &__temperature {
+    display: none;
+    background-image: linear-gradient(180deg, #434343 0%, black 100%);
+    border-radius: 10px;
+    padding: 1.6rem;
+    height: 350px;
+    width: 320px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    p {
+      color: var(--white);
+    }
+    &-Active {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    &_top {
+      display: flex;
+      gap: 80px;
+      margin-top: 15px;
+      &_city {
+        display: flex;
+        width: 100%;
+      }
+    }
+    &_mid {
+      display: flex;
+      height: 200px;
+      align-items: center;
+      flex-direction: column;
+      font-size: 16px;
+      &_icon {
+        height: 150px;
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+      &_description {
+        text-transform: uppercase;
+      }
+    }
+    &__bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &_bottom_left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 40px;
+      &-row {
+        display: flex;
+      }
+    }
+    &_bottom_right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 5px;
+      margin-bottom: 5px;
+      &_celsius {
+        font-size: 42px;
+      }
+      &_lowest,
+      &_highest {
+        font-size: 14px;
+      }
+    }
+  }
+}

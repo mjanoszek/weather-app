@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>forecast</title>
+    <link rel="stylesheet" href="./main.scss" />
+    <link rel="stylesheet" href="./fontawesome/css/all.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="weather">
+        <div class="weather__form">
+          <button class="submitButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <button class="getCurrentLocationButton"><i class="fa-solid fa-location-arrow"></i></button>
+          <input type="text" class="cityInput" />
+        </div>
+
+        <div class="weather__temperature">
+          <div class="weather_box">
+            <div class="weather__temperature_top">
+              <p class="weather__temperature_top_city"></p>
+              <p class="weather__temperature_top_time"></p>
+            </div>
+
+            <div class="weather__temperature_mid">
+              <img alt="weather-image" class="weather__temperature_mid_icon" />
+              <p class="weather__temperature_mid_description"></p>
+            </div>
+            <div class="weather__temperature__bottom">
+              <div class="weather__temperature_bottom_left">
+                <div class="weather__temperature_bottom_left-row">
+                  <i class="fa-solid fa-droplet">&nbsp;</i>
+                  <p class="weather__temperature_bottom_left_humidity"></p>
+                </div>
+                <div class="weather__temperature_bottom_left-row">
+                  <i class="fa-solid fa-wind">&nbsp;</i>
+                  <p class="weather__temperature_bottom_left_wind"></p>
+                </div>
+              </div>
+              <div class="weather__temperature_bottom_right">
+                <p class="weather__temperature_bottom_right_highest"></p>
+                <p class="weather__temperature_bottom_right_lowest"></p>
+                <p class="weather__temperature_bottom_right_celsius"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="weather__air">
+          <iframe class="weather__air__quality" id="airly_1090458427"></iframe>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./app.ts"></script>
+    <script src="https://airly.org/map/airly.js" type="text/javascript"></script>
+    
+  </body>
+</html>
