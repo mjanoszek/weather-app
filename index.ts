@@ -4,7 +4,6 @@ import cors from "cors";
 import * as path from "path";
 import * as dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import { send } from "process";
 const app = express();
 const port = 3000;
 dotenv.config();
@@ -13,13 +12,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
 
-const whitelist: String[] = [
-  "http://127.0.0.1",
-  "http://127.0.0.1:1234",
-  "http://127.0.0.1:3000",
-];
 const corsOptions = {
-  origin: (origin, callback) => {
+  origin: (origin: undefined, callback: (arg0: any, arg1: boolean) => void) => {
     callback(null, true);
   },
   optionsSuccessStatus: 200,
@@ -43,9 +37,9 @@ app.get("*.woff2", sendFile);
 
 const urls = {
   "/weather": (req: Request) =>
-  `https://api.openweathermap.org/data/2.5/weather?q=${req.query.city}&units=imperial&appid=${process.env.WEATHER_API_KEY}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${req.query.city}&appid=${process.env.WEATHER_API_KEY}&units=metric`,
   "/byLocation": (req: Request) =>
-    `https://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=${process.env.WEATHER_API_KEY}&units=imperial`,
+    `https://api.openweathermap.org/data/2.5/weather?lat=${req.query.lat}&lon=${req.query.lon}&appid=${process.env.WEATHER_API_KEY}&units=metric`,
   "/timezone": (req: Request) =>
     `https://api.ipgeolocation.io/timezone?apiKey=${process.env.TIMEZONE_API_KEY}&lat=${req.query.lat}&long=${req.query.long}`,
 };
@@ -55,7 +49,7 @@ async function sendData(req: Request, res: Response) {
     if (!process.env.WEATHER_API_KEY) {
       throw new Error("You forgot to set WEATHER_API_KEY");
     }
-    let url = req.url.split("?").shift();
+    const url = req.url.split("?").shift();
     const result = await fetch(urls[url](req), {
       method: "get",
     });
