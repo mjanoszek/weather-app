@@ -46,9 +46,9 @@ const getCityTime = async (lat: number, long: number) => {
     const a = await arr;
     displayTime.textContent = a;
   };
-  const arr: Object[] = [];
+  const arr: string[] = [];
   const rest = await fetch(`${backend}/timezone?long=${long}&lat=${lat}`);
-  const obj: any = await rest.json();
+  const obj = await rest.json();
   const time = obj.time_24;
   arr.push(time.slice(0, 5));
   return printAddress(arr);
@@ -90,7 +90,7 @@ const getWeatherByInput = async (searchtext: any = cityInput.value) => {
   const url = await fetch(`${backend}/weather?city=${searchtext}`);
   try {
     updateFromData(await url.json());
-  } catch (err: any) {
+  } catch (err) {
     return { Error: err.stack };
   }
 };
@@ -99,13 +99,13 @@ const getWeatherByLocation = async (lat: number, lon: number) => {
   const url = await fetch(`${backend}/byLocation?lat=${lat}&lon=${lon}`);
   try {
     updateFromData(await url.json());
-  } catch (err: any) {
+  } catch (err) {
     return { Error: err.stack };
   }
 };
 
 const getCurrentLocation = () => {
-  const succes = (pos) => {
+  const succes = (pos: { coords: { latitude: number; longitude: number } }) => {
     const latitude = pos.coords.latitude;
     const longitude = pos.coords.longitude;
     getWeatherByLocation(latitude, longitude);
