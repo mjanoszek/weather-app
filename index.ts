@@ -53,7 +53,7 @@ const urls = {
 async function sendData(req: Request, res: Response) {
   try {
     if (!process.env.WEATHER_API_KEY) {
-      throw new Error("You forgot to set RANDOMER_API_TOKEN");
+      throw new Error("You forgot to set WEATHER_API_KEY");
     }
     let url = req.url.split("?").shift();
     const result = await fetch(urls[url](req), {
