@@ -9,9 +9,9 @@
 
 - Install dependencies **npm install**
 
-- Set up your OpenWeatherMap key by creating a .env file with this line: **API_KEY=YOUR_API_KEY_HERE**
+- Set up your OpenWeatherMap key by creating a .env file with this line: **WEATHER_API_KEY=YOUR_API_KEY_HERE**
 
-- Start the development server: **npm start**
+- Start the development server: **npm weather**
 
-- Open the app in your browser at http://localhost:3000.
+- Open the app in your browser at **http://localhost:1234**.
 
